@@ -23,7 +23,7 @@ class EvcilHayvan:
             self.enerji -= 20
             if self.enerji < MIN_DEGER:
                 self.enerji = MIN_DEGER
-            self.ernerji += 15
+            self.enerji += 15
             if self.enerji > MAX_DEGER:
                 self.enerji = MAX_DEGER
             print(f"{self.isim} ile oynandı.\n")
