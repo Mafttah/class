@@ -1,14 +1,13 @@
-MIN_DEGER = 0
-MAX_DEGER = 100
-
 class EvcilHayvan:
-    def __init__(self, isim, tur, aclik, uyku_kontrolu, mutlu_et, enerji):
+    def __init__(self, isim, tur, aclik, uyku_kontrolu, mutlu_et, enerji, min_deger = 0, max_deger = 100):
         self.isim = isim
         self.tur = tur
         self.aclik = aclik
         self.uyku_kontrolu = uyku_kontrolu
         self.mutlu_et = mutlu_et
         self.enerji = enerji
+        self.min_deger = min_deger
+        self.max_deger = max_deger
 
     def aclik_kontrol(self):
         if self.aclik < 50:
@@ -21,11 +20,11 @@ class EvcilHayvan:
             print(f"{self.isim} çok yorgun!")
         else:
             self.enerji -= 20
-            if self.enerji < MIN_DEGER:
-                self.enerji = MIN_DEGER
+            if self.enerji < self.min_deger:
+                self.enerji = self.min_deger
             self.enerji += 15
-            if self.enerji > MAX_DEGER:
-                self.enerji = MAX_DEGER
+            if self.enerji > self.min_deger:
+                self.enerji = self.max_deger
             print(f"{self.isim} ile oynandı.\n")
 
     def mutluluk_kontrolu(self):
@@ -33,20 +32,19 @@ class EvcilHayvan:
             print(f"{self.isim} az mutlu!")
         else:
             self.enerji += 10
-            if self.enerji > MAX_DEGER:
-                self.enerji = MAX_DEGER
+            if self.enerji > self.max_deger:
+                self.enerji = self.max_deger
             print(f"{self.isim} daha mutlu!\n")
 
     def uyku(self):
         if self.uyku_kontrolu < 50:
             print(f"{self.isim} uyuması lazım!")
         else:
-            self.uyku_kontrolu -= 30
-            if self.uyku_kontrolu < MIN_DEGER:
-                self.uyku_kontrolu = MIN_DEGER
             self.enerji += 40
-            if self.enerji > MAX_DEGER:
-                self.enerji = MAX_DEGER
+            if self.enerji > self.max_deger:
+                # TODO: min key wordü ile bunu kontrol etmeliyiz: min(100, self.enerji + 40)
+                # TODO: min fonksiyonunun kullanımını araştır. 
+                self.enerji = self.max_deger
             print(f"{self.isim} uyudu ve dinlendi.\n")
 
     def enerji_kontrol(self):
@@ -70,7 +68,10 @@ mutluluk = int(input(f"{isim} için mutluluk seviyesini girin (0-100): "))
 enerji = int(input(f"{isim} için enerji seviyesini girin (0-100): "))   
 
 evcil_hayvan = EvcilHayvan(isim, tur, aclik, uyku, mutluluk, enerji)
-
+kedi = EvcilHayvan("Pamuk", "Van kedisi", "karnı tok", "Uykucu", "Mutlu", "Yüksek", 47, 100)
+print(f"Kedinin adı: {kedi.isim}")
+sayi = int(5)
+isim = str("Bora")
 # Menü
 while True:
     print("\n1. Açlık Kontrolü")
