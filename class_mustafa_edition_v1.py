@@ -82,6 +82,7 @@ def ana_menu():
             print("Geçersiz giriş. Lütfen bir sayı girin.")
 
 # --- Programın Başlangıcı ---
+# Programı çalıştırma anındaki __name__ ve __main__ yapısını anlamadım tekrar kontrol edelim. 
 if __name__ == "__main__":
     print("Sanal Evcil Hayvanınız Uygulamasına Hoş Geldiniz!")
 
